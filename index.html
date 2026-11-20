@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ももノート</title>
+<meta name="description" content="桃谷高校の授業支援アプリ「ももノート」の入口です。">
+<meta name="theme-color" content="#1c1f24">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ももノート">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#141619;--panel:#1e2125;--ink:#eef0f2;--sub:#a3aab3;--line:#30353c;--acc:#d9533f}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 "BIZ UDPGothic","Noto Sans JP",system-ui,sans-serif;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  display:flex;flex-direction:column;min-height:100svh}
+main{flex:1;width:min(440px,100%);margin:0 auto;padding:56px 24px 32px;display:flex;flex-direction:column;gap:28px}
+.brand{display:flex;align-items:center;gap:16px}
+.brand img{width:64px;height:64px;border-radius:15px;box-shadow:0 8px 24px -10px rgba(0,0,0,.7)}
+.brand h1{margin:0;font-size:30px;line-height:1.1;letter-spacing:.04em}
+.brand p{margin:4px 0 0;color:var(--sub);font-size:13px;letter-spacing:.08em}
+.lead{margin:0;color:var(--sub);font-size:15px}
+.open{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding:0 22px;border-radius:12px;
+  background:var(--acc);color:#fff;text-decoration:none;font-weight:700;font-size:18px;letter-spacing:.04em}
+.open:active{transform:scale(.985)}
+.open svg{width:22px;height:22px}
+:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.note{margin:-14px 0 0;color:var(--sub);font-size:13px}
+section{border-top:1px solid var(--line);padding-top:22px}
+h2{margin:0 0 12px;font-size:15px;letter-spacing:.06em}
+ol[hidden]{display:none}
+ol{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:10px}
+ol li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:14px;color:var(--sub)}
+ol li::before{content:counter(s);display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1px solid var(--line);color:var(--ink);font-size:12px;margin-top:1px}
+b{color:var(--ink);font-weight:700}
+.tabs{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:14px}
+.tabs button{min-height:36px;padding:0 16px;border:0;background:transparent;color:var(--sub);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--bg)}
+.install{display:none;width:100%;min-height:48px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:inherit;font-weight:700;cursor:pointer;margin-bottom:14px}
+footer{text-align:center;color:#6b727b;font-size:12px;padding:16px 24px 24px}
+@media(display-mode:standalone){.howto{display:none}}
+@media(prefers-reduced-motion:no-preference){.open{transition:transform .1s}}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">
+    <img src="icons/icon-192.png" alt="">
+    <div><h1>ももノート</h1><p>桃谷高校 授業支援</p></div>
+  </div>
+  <p class="lead">カードの作成・提出、先生からの資料、講座のボードを使えます。</p>
+  <a class="open" id="open" href="https://script.google.com/a/macros/e.osakamanabi.jp/s/AKfycbyylWvVy1kIHIFuydcOt0cq3NJnj-EhIcngt5C2qM5rrnvjx6BL4SzX44al9TGt1EFBww/exec">ももノートを開く
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <p class="note">学校のGoogleアカウントでログインしてください。初めての講座は、先生から伝えられた4桁の参加コードを入れます。</p>
+
+  <section class="howto" aria-labelledby="h-home">
+    <h2 id="h-home">ホーム画面に追加する</h2>
+    <button class="install" id="install" type="button">ホーム画面に追加</button>
+    <div class="tabs" role="tablist">
+      <button role="tab" data-os="ios" aria-selected="true">iPhone・iPad</button>
+      <button role="tab" data-os="android" aria-selected="false">Android</button>
+    </div>
+    <ol data-os="ios">
+      <li><span><b>Safari</b>でこのページを開く</span></li>
+      <li><span>画面下の<b>共有ボタン</b>（四角から矢印が出たマーク）を押す</span></li>
+      <li><span><b>「ホーム画面に追加」</b>→ 右上の<b>「追加」</b></span></li>
+    </ol>
+    <ol data-os="android" hidden>
+      <li><span><b>Chrome</b>でこのページを開く</span></li>
+      <li><span>右上の<b>︙（メニュー）</b>を押す</span></li>
+      <li><span><b>「ホーム画面に追加」</b>→<b>「インストール」</b>または<b>「追加」</b></span></li>
+    </ol>
+  </section>
+</main>
+<footer>桃谷高校</footer>
+<script>
+{
+  const tabs=document.querySelectorAll('[role=tab]');
+  const show=os=>{tabs.forEach(t=>t.setAttribute('aria-selected',t.dataset.os===os));document.querySelectorAll('ol[data-os]').forEach(o=>o.hidden=o.dataset.os!==os)};
+  tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.os)));
+  if(/android/i.test(navigator.userAgent))show('android');
+  let deferred=null;const btn=document.getElementById('install');
+  addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;btn.style.display='block'});
+  btn.addEventListener('click',async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice.catch(()=>{});deferred=null;btn.style.display='none'});
+  if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+</script>
+</body>
+</html>
